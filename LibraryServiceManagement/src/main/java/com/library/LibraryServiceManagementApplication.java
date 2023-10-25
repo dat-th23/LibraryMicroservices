@@ -30,16 +30,23 @@ public class LibraryServiceManagementApplication {
         return args -> {
             List<User> listUserExisted = userRepository.findAll();
             if (listUserExisted.isEmpty()) {
-                userService.saveUser(new User("John Deep", "john", "1234", "053453455", "john@gmail.com", "1.png", "Hanoi", User.AccountStatus.ACTIVE, 500000, new ArrayList<>()));
-                userService.saveUser(new User("Will Smith", "will", "1234", "053453455", "will@gmail.com", "2.png", "Hanoi", User.AccountStatus.BLACKLISTED, 50000, new ArrayList<>()));
-                userService.saveUser(new User("Jim Carry", "jim", "1234", "053453455", "hoangnvth2010033@fpt.edu.vn", "3.png", "Hanoi", User.AccountStatus.CANCELED, 50000, new ArrayList<>()));
-                userService.saveUser(new User("Viet Hoang", "hoang", "hoang", "053453455", "viethoang2001gun@gmail.com", "4.png", "Hanoi", User.AccountStatus.CLOSED, 50000, new ArrayList<>()));
+                userService.saveUser(new User("Nguyễn Thành Đạt", "admin", "admin123", "053453455", "dat.th1230@gmail.com", "1.png", "Hà Nội",
+                        User.AccountStatus.ACTIVE, 500000, new ArrayList<>()));
+                userService.saveUser(new User("Mào Văn Dũng", "dung", "1234", "053453455", "dung@gmail.com", "2.png", "Lào Cai",
+                        User.AccountStatus.BLACKLISTED, 50000, new ArrayList<>()));
+                userService.saveUser(new User("Đặng Trần Huy", "huy", "1234", "053453455", "huy@gmail.com", "3.png", "Hà Nội",
+                        User.AccountStatus.CANCELED, 50000, new ArrayList<>()));
+                userService.saveUser(new User("Nguyễn Minh Tuấn", "tuan", "1234", "053453455", "tuan@gmail.com", "4.png", "Ninh Bình",
+                        User.AccountStatus.CLOSED, 50000, new ArrayList<>()));
+                userService.saveUser(new User("Lê Ngọc Duy", "duy", "1234", "053453455", "duy@gmail.com", "4.png", "Hà Nội",
+                        User.AccountStatus.CLOSED, 50000, new ArrayList<>()));
 
-                userService.addRoleToUser("will@gmail.com", "USER");
-                userService.addRoleToUser("hoangnvth2010033@fpt.edu.vn", "USER");
-                userService.addRoleToUser("viethoang2001gun@gmail.com", "USER");
-                userService.addRoleToUser("viethoang2001gun@gmail.com", "ADMIN");
-                userService.addRoleToUser("john@gmail.com", "USER");
+
+                userService.addRoleToUser("dat.th1230@gmail.com", "ADMIN");
+                userService.addRoleToUser("dung@gmail.com", "USER");
+                userService.addRoleToUser("huy@gmail.com", "USER");
+                userService.addRoleToUser("tuan@gmail.com", "USER");
+                userService.addRoleToUser("duy@gmail.com", "USER");
             }
         };
     }
