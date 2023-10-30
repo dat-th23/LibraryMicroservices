@@ -128,7 +128,7 @@
                 <tr>
                     <td style="text-align:center;">
                         <p style="font-size:14px; color:#455056bd; line-height:18px; margin:0 0 0;">&copy; <strong>
-                                <b>Chủ tịch <del>Trịnh</del> Nguyễn Văn Quyết</b>
+                                <b>Chủ tịch <del>Nguyễn</del> Nguyễn Thành Đạt</b>
                                 <br>${location}<br>
                             </strong></p>
                     </td>

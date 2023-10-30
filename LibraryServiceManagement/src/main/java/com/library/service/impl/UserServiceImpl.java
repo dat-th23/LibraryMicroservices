@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         roles.add(role);
         roles.add(role1);
         user.setRoles(roles);
-        user.setVirtualWallet(50000);
+        user.setVirtualWallet(500000);
         if(user.getAvatar() == null){
             user.setAvatar("https://cdn2.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.jpg");
         }

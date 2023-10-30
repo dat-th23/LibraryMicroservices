@@ -219,7 +219,7 @@ public class OrderController {
                         orderItemRepository.save(orderItem);
                     }
 
-                    request.setFrom("viethoang2001gun@gmail.com");
+                    request.setFrom("dat.th1230@gmail.com");
                     request.setTo(orderExisted.getEmail());
                     request.setSubject("Hi there!");
                     request.setName(orderExisted.getFullName());
@@ -272,7 +272,7 @@ public class OrderController {
                         orderItemRepository.save(orderItem);
                     }
 
-                    request.setFrom("viethoang2001gun@gmail.com");
+                    request.setFrom("dat.th1230@gmail.com");
                     request.setTo(orderExisted.getEmail());
                     request.setSubject("Hi there!");
                     request.setName(orderExisted.getFullName());
@@ -300,7 +300,7 @@ public class OrderController {
                     orderItemRepository.save(orderItem);
                 }
 
-                request.setFrom("viethoang2001gun@gmail.com");
+                request.setFrom("dat.th1230@gmail.com");
                 request.setTo(orderExisted.getEmail());
                 request.setSubject("Hi there!");
                 request.setName(orderExisted.getFullName());
