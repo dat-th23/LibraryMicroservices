@@ -33,13 +33,13 @@ public class LibraryServiceManagementApplication {
                 userService.saveUser(new User("Nguyễn Thành Đạt", "admin", "admin123", "053453455", "dat.th1230@gmail.com", "1.png", "Hà Nội",
                         User.AccountStatus.ACTIVE, 500000, new ArrayList<>()));
                 userService.saveUser(new User("Mào Văn Dũng", "dung", "1234", "053453455", "dung@gmail.com", "2.png", "Lào Cai",
-                        User.AccountStatus.BLACKLISTED, 50000, new ArrayList<>()));
+                        User.AccountStatus.BLACKLISTED, 500000, new ArrayList<>()));
                 userService.saveUser(new User("Đặng Trần Huy", "huy", "1234", "053453455", "huy@gmail.com", "3.png", "Hà Nội",
-                        User.AccountStatus.CANCELED, 50000, new ArrayList<>()));
+                        User.AccountStatus.CANCELED, 500000, new ArrayList<>()));
                 userService.saveUser(new User("Nguyễn Minh Tuấn", "tuan", "1234", "053453455", "tuan@gmail.com", "4.png", "Ninh Bình",
-                        User.AccountStatus.CLOSED, 50000, new ArrayList<>()));
+                        User.AccountStatus.CLOSED, 500000, new ArrayList<>()));
                 userService.saveUser(new User("Lê Ngọc Duy", "duy", "1234", "053453455", "duy@gmail.com", "4.png", "Hà Nội",
-                        User.AccountStatus.CLOSED, 50000, new ArrayList<>()));
+                        User.AccountStatus.CLOSED, 500000, new ArrayList<>()));
 
 
                 userService.addRoleToUser("dat.th1230@gmail.com", "ADMIN");
