@@ -3,6 +3,8 @@ package com.library.controller;
 import com.library.entity.Category;
 import com.library.repository.CategoryRepository;
 import com.library.service.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ public class CategoryController {
 
 
     @GetMapping("/categories")
+//    @RequestMapping(value = "/categories", method = RequestMethod.GET, produces = "application/json")
     public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
     }
@@ -36,6 +39,9 @@ public class CategoryController {
         return (List<Category>) categoryRepository.findAll(pageable);
     }*/
 
+    @Operation(summary = "Get a resource by ID")
+    @ApiResponse(responseCode = "200", description = "Resource found")
+    @ApiResponse(responseCode = "404", description = "Resource not found")
     @GetMapping("/category/{id}")
     public ResponseEntity<?> getCategoryByID(@PathVariable Long id){
         if(categoryRepository.findById(id) == null){
