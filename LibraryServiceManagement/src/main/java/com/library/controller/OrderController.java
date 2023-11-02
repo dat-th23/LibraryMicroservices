@@ -370,7 +370,6 @@ public class OrderController {
         orderService.exportSingleOrderToExcel(response, orders);
     }
 
-
     private String applicationUrl(HttpServletRequest request, Long userId) {
         return "http://" +
                 request.getServerName() +
