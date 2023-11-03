@@ -192,17 +192,17 @@ public class UserController {
         if (user!= null) {
             String token = UUID.randomUUID().toString();
             userService.createPasswordResetTokenForUser(user, token);
-            //url = passwordResetTokenMail(user, applicationUrl(request), token);
+//            url = passwordResetTokenMail(user, applicationUrl(request), token);
             //Get Server Request by Client
             url = passwordResetTokenMail(user, applicationUrlClient(clientLink), token);
-           /* mailService.sendMailWithoutAttachment(
-                    "" + user.getEmail(),
-                    "\tIf you have send Reset Password Request, please enter this link to reset your password: \n "+ url +
-                            "\t( This link will be disabled after 10 minutes. )" +
-                            "\n\n\tIf you are not the one who had send request to us, please check your Account's Security.",
-                    "Hi "  + " from Maleficent System!"
-            );*/
-            mailRequest.setFrom("viethoang2001gun@gmail.com");
+//           mailService.sendMailWithoutAttachment(
+//                    "" + user.getEmail(),
+//                    "\tIf you have send Reset Password Request, please enter this link to reset your password: \n "+ url +
+//                            "\t( This link will be disabled after 10 minutes. )" +
+//                            "\n\n\tIf you are not the one who had send request to us, please check your Account's Security.",
+//                    "Hi "  + " from Maleficent System!"
+//            );
+            mailRequest.setFrom("dat.th1230@gmail.com");
             mailRequest.setTo(user.getEmail());
             mailRequest.setSubject("Hello "+user.getEmail());
             mailRequest.setName(user.getUsername());
@@ -225,7 +225,7 @@ public class UserController {
         Optional<User> user = userService.getUserByPasswordResetToken(token);
         if(user.isPresent()) {
 
-            request.setFrom("viethoang2001gun@gmail.com");
+            request.setFrom("dat.th1230@gmail.com");
             request.setTo(user.get().getEmail());
             request.setSubject("Hi there!");
             request.setName(user.get().getName());

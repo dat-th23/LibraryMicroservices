@@ -179,7 +179,7 @@ public class OrderController {
                         orderItemRepository.save(orderItem);
                     }
 
-                    request.setFrom("viethoang2001gun@gmail.com");
+                    request.setFrom("dat.th1230@gmail.com");
                     request.setTo(orderExisted.getEmail());
                     request.setSubject("Hi there!");
                     request.setName(orderExisted.getFullName());
@@ -369,7 +369,6 @@ public class OrderController {
         response.setHeader(headerKey, headerValue);
         orderService.exportSingleOrderToExcel(response, orders);
     }
-
 
     private String applicationUrl(HttpServletRequest request, Long userId) {
         return "http://" +

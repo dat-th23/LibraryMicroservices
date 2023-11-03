@@ -21,6 +21,7 @@ public class Book {
     @Column(unique = true)
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String subject;
     private String publisher;
     private String language;
