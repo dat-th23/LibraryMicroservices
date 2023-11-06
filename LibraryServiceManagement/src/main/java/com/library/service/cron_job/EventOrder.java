@@ -37,20 +37,20 @@ import java.util.Map;
 @Component
 public class EventOrder {
 
-    private final JavaMailSender mailSender;
-
-    private Configuration config;
-
-    private final OrderItemService orderItemService;
-
-    private final OrderService orderService;
-
-    private final Map<String, Object> model;
-
-    private static String[] Bcc_Mail = {
-
-    };
-
+//    private final JavaMailSender mailSender;
+//
+//    private Configuration config;
+//
+//    private final OrderItemService orderItemService;
+//
+//    private final OrderService orderService;
+//
+//    private final Map<String, Object> model;
+//
+//    private static String[] Bcc_Mail = {
+//
+//    };
+//
 //    @Scheduled(cron = "* */1 * * * *")// Fire at 6:30 AM every day : 0 30 6 ? * *
 //    public void  sendMailToRunningOutOfDateOrder() throws MessagingException {
 //        //Working normally
@@ -76,7 +76,7 @@ public class EventOrder {
 //
 //                helper.setText(html, true);
 //                helper.setSubject("Xin chao");
-//                helper.setFrom("viethoang2001gun@gmail.com");
+//                helper.setFrom("dat.th1230@gmail.com");
 //                helper.setBcc(Bcc_Mail);
 //                mailSender.send(message);
 //                log.info("Every minute!!");
