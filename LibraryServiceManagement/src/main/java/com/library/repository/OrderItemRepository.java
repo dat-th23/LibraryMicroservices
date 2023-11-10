@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     @Query(
-            value = "SELECT * FROM order_item s where s.order_id = :orderId",
+            value = "SELECT * FROM order_item s where s.order_id = :orderId ORDER BY s.created_at",
             nativeQuery = true
     )
     List<OrderItem> getAllOrderItemByOrderID(String orderId);
 
     @Query(
-            value = "SELECT * FROM order_item s where DAY(s.returned_at) - DAY(CURDATE()) = 1",
+            value = "SELECT * FROM order_item s where DAY(s.returned_at) - DAY(CURDATE()) = 1 ORDER BY s.created_at",
             nativeQuery = true
     )
     List<OrderItem> getAllOrderItemRunningOutOfDate();
@@ -22,7 +22,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     @Query(
             value = "SELECT * FROM order_item s " +
                     "where MONTH(s.borrowed_at) = :monthDate and " +
-                    " YEAR(s.borrowed_at) = :yearDate ",
+                    " YEAR(s.borrowed_at) = :yearDate ORDER BY s.created_at",
             nativeQuery = true
     )
     List<OrderItem> getAllOrderItemByMonthAndYear(int monthDate, int yearDate);

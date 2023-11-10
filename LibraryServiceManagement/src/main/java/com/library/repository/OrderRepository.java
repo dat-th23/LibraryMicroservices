@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, String> {
     @Query(
-            value = "SELECT * FROM orders s where s.user_id = :userId",
+            value = "SELECT * FROM orders s where s.user_id = :userId ORDER BY s.created_at",
             nativeQuery = true
     )
     List<Order> getAllOrderByUserID(Long userId);
@@ -18,7 +18,7 @@ public interface OrderRepository extends JpaRepository<Order, String> {
             value = "SELECT s.* " +
                     " FROM orders s " +
                     " where s.user_id = :userId " +
-                    " and s.order_id = :orderId",
+                    " and s.order_id = :orderId ORDER BY s.created_at",
             nativeQuery = true
     )
     Order getOrderDetailByUserID(Long userId, String orderId);
@@ -32,7 +32,7 @@ public interface OrderRepository extends JpaRepository<Order, String> {
                     " and (c.status = 'AVAILABLE' or c.status = 'COMPLETED' )" +
                     " and YEAR(c.created_at) = :year " +
                     " group by MONTH(c.created_at) " +
-                    " order by count(c.order_id) desc ",
+                    " order by count(c.order_id) desc ,MONTH(c.created_at)",
             nativeQuery = true
     )
     List<Tuple> get_Top_Order_Of_User_By_Month(long userId, int year);
