@@ -1,5 +1,6 @@
 package com.library.service.cron_job;
 
+import com.library.service.MailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 
 @Service
@@ -52,17 +54,17 @@ public class EventCreator {
 
     //@Scheduled(cron = "[Seconds] [Minutes] [Hours] [Day of month] [Month] [Day of week] [Year]")
 
-    //private final MailService mailService;
-
+//    private final MailService mailService;
+//
 //    @Scheduled(cron = "*/1 * * * * *")//every seconds
 //    public void  triggerMail() throws MessagingException, InterruptedException {
-//        mailService.sendMailWithAttachment("viethoang2001gun@gmail.com",
+//        mailService.sendMailWithAttachment("dat.th1230@gmail.com",
 //                "You login with wrong password !",
-//                "Hi Viet Hoang",
+//                "Hi Thanh Dat",
 //                "D:\\Themes\\Anime\\1.jpg");
 //        Thread.sleep(1000L);
 //    }
-
+//
 //    @Scheduled(cron = " 0 0/1 * * * *")//every 1 minute
 //    public void  triggerEveryMinute() {
 //        log.info("Every minute!!");
