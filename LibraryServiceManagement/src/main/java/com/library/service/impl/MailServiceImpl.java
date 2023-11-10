@@ -56,7 +56,7 @@ public class MailServiceImpl implements MailService {
     public void sendSimpleEmail(String toEmail, String body, String subject) {
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom("viethoang2001gun@gmail.com");
+        message.setFrom("dat.th1230@gmail.com");
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
@@ -66,33 +66,31 @@ public class MailServiceImpl implements MailService {
     }
 
     private static String[] Bcc_Mail = {
-          /*  "hoangnvth2010033@fpt.edu.vn",
-            "viethoang2001gun@gmail.com",
-            "anhhvth2010043@fpt.edu.vn"*/
+            "dat.th1230@gmail.com",
     };
 
-    /*@Scheduled(cron = " 0 0/1 * * * *")//every 1 minute
-    public void  triggerEveryMinute() throws MessagingException {
-        //Working normally
-        List<String> Bcc_mail = new ArrayList<String>();
-        List<User> userList = userRepository.findAll();
-        for(User user :userList){
-            Bcc_mail.add(user.getEmail());
-        }
-
-        Bcc_Mail = Bcc_mail.toArray(new String[0]);
-
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom("viethoang2001gun@gmail.com");
-        message.setTo("viethoang2001gun@gmail.com");
-        message.setText("Hi there");
-        message.setSubject("Xin chao");
-        message.setBcc(Bcc_Mail);//send multiple mail with hide their identity
-
-        mailSender.send(message);
-        log.info("Every minute!!");
-    }*/
+//    @Scheduled(cron = " 0 0/1 * * * *")//every 1 minute
+//    public void  triggerEveryMinute() throws MessagingException {
+//        //Working normally
+//        List<String> Bcc_mail = new ArrayList<String>();
+//        List<User> userList = userRepository.findAll();
+//        for(User user :userList){
+//            Bcc_mail.add(user.getEmail());
+//        }
+//
+//        Bcc_Mail = Bcc_mail.toArray(new String[0]);
+//
+//        SimpleMailMessage message = new SimpleMailMessage();
+//
+//        message.setFrom("dat.th1230@gmail.com");
+//        message.setTo("dat.th1230@gmail.com");
+//        message.setText("Hi there");
+//        message.setSubject("Xin chao");
+//        message.setBcc(Bcc_Mail);//send multiple mail with hide their identity
+//
+//        mailSender.send(message);
+//        log.info("Every minute!!");
+//    }
 
         @Scheduled(cron = "0 30 6 ? * *")// Fire at 6:30 AM every day : 0 30 6 ? * *
     public void  sendMailToRunningOutOfDateOrder() {
@@ -130,7 +128,7 @@ public class MailServiceImpl implements MailService {
 
                 helper.setText(html, true);
                 helper.setSubject("Xin chao");
-                helper.setFrom("viethoang2001gun@gmail.com");
+                helper.setFrom("dat.th1230@gmail.com");
                 helper.setBcc(Bcc_Mail);
 
                 mailSender.send(message);
@@ -210,7 +208,7 @@ public class MailServiceImpl implements MailService {
 
                 helper.setText(html, true);
                 helper.setSubject("Xin chao");
-                helper.setFrom("viethoang2001gun@gmail.com");
+                helper.setFrom("dat.th1230@gmail.com");
                 helper.setBcc(Bcc_Mail);
 
                 mailSender.send(message);
@@ -228,7 +226,7 @@ public class MailServiceImpl implements MailService {
     public void sendMultipleMail(String toEmail, String body, String subject) throws MessagingException {
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom("viethoang2001gun@gmail.com");
+        message.setFrom("dat.th1230@gmail.com");
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
@@ -245,7 +243,7 @@ public class MailServiceImpl implements MailService {
         MimeMessageHelper mimeMessageHelper
                 = new MimeMessageHelper(mimeMessage, true);
 
-        mimeMessageHelper.setFrom("anhhvth2010043@fpt.edu.vn");
+        mimeMessageHelper.setFrom("dat.th1230@gmail.com");
         mimeMessageHelper.setTo(toEmail);
         mimeMessageHelper.setText(body);
         mimeMessageHelper.setSubject(subject);
@@ -266,7 +264,7 @@ public class MailServiceImpl implements MailService {
         MimeMessageHelper mimeMessageHelper
                 = new MimeMessageHelper(mimeMessage, true);
 
-        mimeMessageHelper.setFrom("anhhvth2010043@fpt.edu.vn");
+        mimeMessageHelper.setFrom("dat.th1230@gmail.com");
         mimeMessageHelper.setTo(toEmail);
         mimeMessageHelper.setText(body);
         mimeMessageHelper.setSubject(subject);
