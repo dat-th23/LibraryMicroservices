@@ -181,11 +181,11 @@ public class UserController {
     }
 
     @PostMapping("/user/resetPassword")
-    public String resetPassword(@RequestParam("clientLink") String clientLink,
+    public String resetPassword(/*@RequestParam("clientLink") String clientLink,*/
                                 @RequestBody PasswordModel passwordModel,
                                 HttpServletRequest request,
                                 MailRequest mailRequest)
-            throws MessagingException
+            /*throws MessagingException*/
     {
         User user = userService.findUserByEmail(passwordModel.getEmail());
         String url = "";
@@ -194,7 +194,7 @@ public class UserController {
             userService.createPasswordResetTokenForUser(user, token);
 //            url = passwordResetTokenMail(user, applicationUrl(request), token);
             //Get Server Request by Client
-            url = passwordResetTokenMail(user, applicationUrlClient(clientLink), token);
+            url = passwordResetTokenMail(user, applicationUrl(request), token);
 //           mailService.sendMailWithoutAttachment(
 //                    "" + user.getEmail(),
 //                    "\tIf you have send Reset Password Request, please enter this link to reset your password: \n "+ url +

@@ -56,6 +56,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User saveUser(User user) {
+        User existingUser = userRepo.findByUsername(user.getUsername());
+        if (existingUser != null) {
+            // Nếu người dùng đã tồn tại
+            // Trả về thông báo lỗi
+            throw new RuntimeException("Username already exists");
+        } else {
         //Account auto has role 'Member' whenever created
         Role role = roleRepository.findByName("MEMBER");
         Role role1 = roleRepository.findByName("USER");
@@ -64,13 +70,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         roles.add(role1);
         user.setRoles(roles);
         user.setVirtualWallet(500000);
-        if(user.getAvatar() == null){
+        if (user.getAvatar() == null) {
             user.setAvatar("https://cdn2.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.jpg");
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        log.info("Saving new user {} to the database", user.getName());
-        return userRepo.save(user);
+
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            log.info("Saving new user {} to the database", user.getName());
+            return userRepo.save(user);
+        }
     }
 
     @Override
