@@ -21,6 +21,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Service
 @Slf4j
 public class BookServiceImpl implements BookService {
@@ -72,9 +75,30 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Page<Book> getAllBooksPaged(Pageable pageable) {
+        return bookRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Book> getAllBooksByKeywordPaged(String keyword, Pageable pageable) {
+        return bookRepository.getAllBooksByKeyword(keyword, pageable);
+    }
+
+    @Override
+    public Page<Book> getAllBookByCategoryIDPaged(Long cateID, Pageable pageable) {
+        return bookRepository.getAllBookByCategoryID(cateID, pageable);
+    }
+
+    @Override
+    public Page<Book> getAllBookByCateIDAndKeywordPaged(Long cateID, String keyword, Pageable pageable) {
+        return bookRepository.getAllBookByCateIDAndKeyword(cateID, keyword, pageable);
+    }
+
+    @Override
     public List<Book> getAllBookByKeyword(String keyword) {
         return bookRepository.getAllBooksByKeyword(keyword);
     }
+
 
     @Override
     public List<Book> getListBook_InOrder(String orderId){

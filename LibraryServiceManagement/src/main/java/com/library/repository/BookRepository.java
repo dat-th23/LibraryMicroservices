@@ -57,4 +57,39 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     )
     List<Book> getListBook_InOrder(String orderId);
 
+    @Query(
+            value = "SELECT * from book b " +
+                    "where b.author like %:keyword% " +
+                    " or b.detail like %:keyword% " +
+                    " or b.publisher like %:keyword% " +
+                    " or b.subject like %:keyword% " +
+                    " or b.title like %:keyword% " +
+                    " or b.amount like %:keyword% " +
+                    " or b.borrow_price like %:keyword% ",
+            nativeQuery = true
+    )
+    Page<Book> getAllBooksByKeyword(String keyword, Pageable pageable);
+
+
+    @Query(
+            value = "SELECT * FROM book b where b.category_id = :cateId",
+            nativeQuery = true
+    )
+    Page<Book> getAllBookByCategoryID(Long cateId, Pageable pageable);
+
+
+    @Query(
+            value = "SELECT * FROM book b " +
+                    "WHERE b.category_id = :cateId " +
+                    "AND (b.author LIKE %:keyword% " +
+                    "OR b.detail LIKE %:keyword% " +
+                    "OR b.publisher LIKE %:keyword% " +
+                    "OR b.subject LIKE %:keyword% " +
+                    "OR b.title LIKE %:keyword% " +
+                    "OR b.amount LIKE %:keyword% " +
+                    "OR b.borrow_price LIKE %:keyword%)",
+            nativeQuery = true
+    )
+    Page<Book> getAllBookByCateIDAndKeyword(Long cateId, String keyword, Pageable pageable);
+
 }

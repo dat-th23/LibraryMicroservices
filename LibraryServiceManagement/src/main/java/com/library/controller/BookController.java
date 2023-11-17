@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -26,13 +28,15 @@ public class BookController {
     private final CategoryRepository categoryRepository;
 
     @GetMapping("/books")
-    public List<Book> getAllBooks() {
-        return bookService.getAllBooks();
+    public ResponseEntity<Page<Book>> getAllBooksPaged(Pageable pageable) {
+        Page<Book> books = bookService.getAllBooksPaged(pageable);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     @GetMapping("/books/search")
-    public List<Book> getAllBooksByKeyword(@RequestParam("keyword") String keyword) {
-        return bookService.getAllBookByKeyword(keyword);
+    public ResponseEntity<Page<Book>> getAllBooksByKeywordPaged(@RequestParam("keyword") String keyword, Pageable pageable) {
+        Page<Book> books = bookService.getAllBooksByKeywordPaged(keyword, pageable);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
 
@@ -46,23 +50,19 @@ public class BookController {
     }
 
     @GetMapping("/books/category/{cateId}")
-    public ResponseEntity<?> getBookByCateID(@PathVariable Long cateId){
-        if(bookService.getAllBookByCategoryID(cateId) == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("List books is empty!");
-        }else{
-            return ResponseEntity.ok().body(bookService.getAllBookByCategoryID(cateId));
-        }
+    public ResponseEntity<Page<Book>> getBookByCateIDPaged(@PathVariable Long cateId, Pageable pageable) {
+        Page<Book> books = bookService.getAllBookByCategoryIDPaged(cateId, pageable);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     @GetMapping("/books/cateID-search")
-    public ResponseEntity<?> getBookByCateIDAndKeyword(@RequestParam("cateID") Long cateID,
-                                                       @RequestParam("keyword") String keyword){
-        if(bookService.getAllBookByCateIDAndKeyword(cateID, keyword) == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("List books is empty!");
-        }else{
-            return ResponseEntity.ok().body(bookService.getAllBookByCateIDAndKeyword(cateID, keyword));
-        }
+    public ResponseEntity<Page<Book>> getBookByCateIDAndKeywordPaged(@RequestParam("cateID") Long cateID,
+                                                                     @RequestParam("keyword") String keyword,
+                                                                     Pageable pageable) {
+        Page<Book> books = bookService.getAllBookByCateIDAndKeywordPaged(cateID, keyword, pageable);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
+
 
     @GetMapping("/books/best-seller/top")
     public ResponseEntity<?> getTopBestSeller(@RequestParam("topNumber") int topNumber){
