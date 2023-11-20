@@ -147,20 +147,28 @@ public class OrderServiceImpl implements OrderService {
         Calendar cal = Calendar.getInstance();
         order.setUpdatedAt(cal.getTime());
 
-        Order orderExisted = orderRepository.findById(id).get();
-        orderExisted.setOrderId(order.getOrderId());
-        orderExisted.setFullName(order.getFullName());
-        orderExisted.setEmail(order.getEmail());
-        orderExisted.setPhoneNumber(order.getPhoneNumber());
-        orderExisted.setAddress(order.getAddress());
-        orderExisted.setStatus(order.getStatus());
-        orderExisted.setType(order.getType());
+        Order orderExisted = orderRepository.findById(id).orElse(null);
+        if (orderExisted != null) {
+            // Kiểm tra xem trạng thái hiện tại có phải là "PROCESSING" không
+            if (Order.OrderStatus.PROCESSING.equals(orderExisted.getStatus())) {
+                // Nếu đang ở trạng thái "PROCESSING", không thực hiện cập nhật trạng thái
+                return orderExisted;
+            }
+            orderExisted.setOrderId(order.getOrderId());
+            orderExisted.setFullName(order.getFullName());
+            orderExisted.setEmail(order.getEmail());
+            orderExisted.setPhoneNumber(order.getPhoneNumber());
+            orderExisted.setAddress(order.getAddress());
+            orderExisted.setStatus(order.getStatus());
+            orderExisted.setType(order.getType());
        /* orderExisted.setTotalDeposit(order.getTotalDeposit());
         orderExisted.setTotalRent(order.getTotalRent());*/
 
-        orderExisted.setUpdatedAt(order.getUpdatedAt());
+            orderExisted.setUpdatedAt(order.getUpdatedAt());
 
-        orderRepository.save(orderExisted);
+            orderRepository.save(orderExisted);
+
+        }
         return orderExisted;
     }
 
