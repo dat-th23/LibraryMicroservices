@@ -149,9 +149,9 @@ public class OrderServiceImpl implements OrderService {
 
         Order orderExisted = orderRepository.findById(id).orElse(null);
         if (orderExisted != null) {
-            // Kiểm tra xem trạng thái hiện tại có phải là "PROCESSING" không
-            if (Order.OrderStatus.PROCESSING.equals(orderExisted.getStatus())) {
-                // Nếu đang ở trạng thái "PROCESSING", không thực hiện cập nhật trạng thái
+            // Kiểm tra xem trạng thái hiện tại có phải là "COMPLETED" không
+            if (Order.OrderStatus.COMPLETED.equals(orderExisted.getStatus())) {
+                // Nếu đang ở trạng thái "COMPLETED", không thực hiện cập nhật trạng thái
                 return orderExisted;
             }
             orderExisted.setOrderId(order.getOrderId());
