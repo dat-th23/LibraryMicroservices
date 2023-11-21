@@ -161,12 +161,18 @@ public class OrderServiceImpl implements OrderService {
             orderExisted.setAddress(order.getAddress());
             orderExisted.setStatus(order.getStatus());
             orderExisted.setType(order.getType());
+            orderExisted.setTotalDeposit(order.getTotalDeposit());
+            orderExisted.setTotalRent(order.getTotalRent());
+            orderExisted.setCreatedAt(order.getCreatedAt());
+
        /* orderExisted.setTotalDeposit(order.getTotalDeposit());
         orderExisted.setTotalRent(order.getTotalRent());*/
 
+            // Gọi phương thức updateVirtualWallet khi trạng thái là PROCESSING
+            orderExisted.updateVirtualWallet();
+
             orderExisted.setUpdatedAt(order.getUpdatedAt());
 
-            orderRepository.save(orderExisted);
 
         }
         return orderExisted;

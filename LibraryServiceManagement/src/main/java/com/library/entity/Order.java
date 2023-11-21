@@ -70,4 +70,10 @@ public class Order {
         VIRTUAL_WALLET,
         DIRECTLY
     }
+    public void updateVirtualWallet() {
+        if (OrderStatus.PROCESSING.equals(this.status)) {
+            int amountToDeduct = this.totalDeposit + this.totalRent;
+            user.updateVirtualWallet(amountToDeduct);
+        }
+    }
 }

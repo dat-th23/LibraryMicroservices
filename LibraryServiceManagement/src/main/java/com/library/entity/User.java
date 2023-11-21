@@ -57,6 +57,10 @@ public class User {
         this.roles = roles;
     }
 
+    public void updateVirtualWallet(int amountToDeduct) {
+        this.virtualWallet += amountToDeduct;
+    }
+
     /*
      * FetchType.EAGER: When you load User table from database, it will automatically load Role table as well
      * FetchType.LAZY : When you load User table from database, it just loads User from DB, you have to call getAllRoles()
