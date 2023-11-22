@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.Tuple;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -143,6 +144,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public Order updateOrder(String id, Order order) {
         Calendar cal = Calendar.getInstance();
         order.setUpdatedAt(cal.getTime());
@@ -154,7 +156,7 @@ public class OrderServiceImpl implements OrderService {
                 // Nếu đang ở trạng thái "COMPLETED", không thực hiện cập nhật trạng thái
                 return orderExisted;
             }
-            orderExisted.setOrderId(order.getOrderId());
+//            orderExisted.setOrderId(order.getOrderId());
             orderExisted.setFullName(order.getFullName());
             orderExisted.setEmail(order.getEmail());
             orderExisted.setPhoneNumber(order.getPhoneNumber());

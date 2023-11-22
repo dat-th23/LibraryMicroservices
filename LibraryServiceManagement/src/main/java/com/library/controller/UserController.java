@@ -255,7 +255,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/user/update-profile")
+    @PostMapping("/user/update-profile")
     public ResponseEntity<?> updateProfile(HttpServletRequest request,
                                            HttpServletResponse response,
                                            @RequestBody User userRequest) throws IOException {
